@@ -2,6 +2,7 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 
 import ControlCard from './components/controlcard';
+import TodoCard from './components/todocard';
 
 class App extends React.Component {
   constructor() {
@@ -44,6 +45,17 @@ class App extends React.Component {
   }
 
   render() {
+    let todoCards = Object.keys(this.state.todos).map((k) => {
+      return (
+        <TodoCard
+          key={k}
+          id={k}
+          todo={this.state.todos[k]}
+          todoRemove={(id) => this.todoRemove(id)}
+      />
+      );
+    });
+
     return (
       <>
         <ControlCard
@@ -53,6 +65,7 @@ class App extends React.Component {
           disabled={this.state.disabled}
           inputField={this.state.newTodo}
         />
+        {todoCards}
       </>
     );
   }
