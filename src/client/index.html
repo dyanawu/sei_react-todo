@@ -41,7 +41,7 @@
      .todo-input {
        width: 95%;
        margin-top: 1em;
-       border: 1px dotted grey;
+       border: 1px dashed grey;
        font-size: 22px;
        box-sizing: border-box;
        font-family: inherit;
@@ -79,6 +79,10 @@
        margin-bottom: 0.75em;
      }
 
+     .todo-button:disabled {
+       border: 1px dashed grey;
+     }
+
      .todo-container {
        display: flex;
        flex-direction: column;
@@ -109,7 +113,7 @@
        padding-top: 1em;
      }
 
-     .todo-item-button {
+     .todo-delete-button {
        background-color: white;
        border: none;
        border-left: 1px solid black;

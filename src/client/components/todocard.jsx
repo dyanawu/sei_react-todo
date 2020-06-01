@@ -19,7 +19,7 @@ class TodoCard extends Component {
         <div className="todo-card">
         <span className="wrap">{this.props.todo}</span>
         <span><button
-                className="todo-item-button"
+                className="todo-delete-button"
                 onClick={(id) => {this.props.todoRemove(this.props.id)}}
 
               >X</button></span>
