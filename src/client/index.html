@@ -1,17 +1,61 @@
 <!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>todo react</title>
     <style>
-      body{
-        background-color:pink;
-      }
+     body {
+       display: flex;
+       flex-direction: column;
+       justify-content: flex-start;
+       align-items: center;
+       background-color:lightblue;
+     }
+
+     #app {
+       display: flex;
+       flex-direction: column;
+       justify-content: flex-start;
+       align-items: center;
+       width: 400px;
+     }
+
+     .control-card {
+       display: flex;
+       flex-direction: column;
+       justify-content: flex-start;
+       align-items: center;
+       background-color: white;
+       width: 100%;
+       padding: 1em;
+       text-align: center;
+     }
+
+     .control-card > h4 {
+       margin: 0;
+     }
+
+     .todo-input {
+       width: 360px;
+       margin-bottom: 1em;
+       border: 1px dotted grey;
+       font-family: serif;
+       font-size: 20px;
+     }
+
+     .todo-button {
+       font-family: serif;
+       width: 362px;
+       background-color: white;
+       border: 1px solid black;
+       padding: 0.5em;
+     }
+
     </style>
-</head>
-<body>
-<h1>Wow, Todo!</h1>
-<div id="app"></div>
-</body>
+  </head>
+  <body>
+    <h1>Wow, Todo!</h1>
+    <div id="app"></div>
+  </body>
 </html>
