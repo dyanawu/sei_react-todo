@@ -7,21 +7,7 @@ class TodoAdder extends Component {
     this.state = {
       formStyle: "todo-input",
       buttonStyle: "todo-button",
-      todos: [],
-      newTodo: ""
     };
-  }
-
-  inputChecker(e) {
-    console.log("target:", e.target.value);
-    this.setState({newTodo: e.target.value});
-    console.log("todos:", this.state.todos);
-    console.log("new todo:", this.state.newTodo);
-  }
-
-  todoAdd(e) {
-    console.log("submit:", this.state.newTodo);
-    e.preventDefault();
   }
 
   render() {
@@ -29,11 +15,16 @@ class TodoAdder extends Component {
       <>
         <h4>What do you need to get done today?</h4>
         <input className={this.state.formStyle}
-               onChange={(e) => this.inputChecker(e)} />
+               onChange={(e) => this.props.inputChecker(e)}
+               value={this.props.inputField}
+        />
         <input type="submit"
                className={this.state.buttonStyle}
-               onClick={(e) => this.todoAdd(e)}
-               value="Add to list" />
+               onClick={(e) => this.props.todoAdd(e)}
+               value="Add to list"
+               disabled={this.props.disabled}
+        />
+        <span>{this.props.error}</span>
       </>
     );
   }

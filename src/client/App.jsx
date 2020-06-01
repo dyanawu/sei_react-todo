@@ -46,7 +46,13 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <ControlCard />
+        <ControlCard
+          inputChecker={(e) => {this.inputChecker(e)}}
+          todoAdd={(e) => this.todoAdd(e)}
+          error={this.state.validationError}
+          disabled={this.state.disabled}
+          inputField={this.state.newTodo}
+        />
       </>
     );
   }

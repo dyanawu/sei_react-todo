@@ -9,7 +9,13 @@ class ControlCard extends Component {
   render() {
     return(
       <div className="control-card">
-        <TodoAdder />
+        <TodoAdder
+          inputChecker={(e) => {this.props.inputChecker(e)}}
+          todoAdd={(e) => {this.props.todoAdd(e)}}
+          error={this.props.error}
+          disabled={this.props.disabled}
+          inputField={this.props.inputField}
+        />
       </div>
     );
   }
