@@ -27,14 +27,12 @@ class App extends React.Component {
   }
 
   todoAdd(e) {
-    console.log("submit:", this.state.newTodo);
     let newTodo = this.state.newTodo;
     if (newTodo.length == 0) {
       return;
     } else {
       let i = this.state.newId;
       this.setState({todos: {...this.state.todos, [i]: newTodo}, newId: i + 1, newTodo: ""});
-      console.log(this.state.todos);
     }
   }
 
