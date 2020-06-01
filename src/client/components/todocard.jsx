@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import moment from 'moment';
 
 class TodoCard extends Component {
   constructor() {
@@ -14,6 +15,9 @@ class TodoCard extends Component {
                 onClick={(id) => {this.props.todoRemove(this.props.id)}}
 
               >X</button></span>
+        <div className="timestamp">
+          {this.props.todoStamp.fromNow()}
+        </div>
       </div>
     );
   }

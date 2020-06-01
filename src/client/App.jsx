@@ -1,5 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
+import moment from 'moment';
 
 import ControlCard from './components/controlcard';
 import TodoCard from './components/todocard';
@@ -10,6 +11,7 @@ class App extends React.Component {
 
     this.state = {
       todos: {},
+      todoStamps: {},
       newId: 1,
       newTodo: "",
       validationError: "",
@@ -32,7 +34,14 @@ class App extends React.Component {
       return;
     } else {
       let i = this.state.newId;
-      this.setState({todos: {...this.state.todos, [i]: newTodo}, newId: i + 1, newTodo: ""});
+      let stamp = moment();
+      console.log(stamp);
+      this.setState({
+        todos: {...this.state.todos, [i]: newTodo},
+        todoStamps: {...this.state.todoStamps, [i]: stamp},
+        newId: i + 1,
+        newTodo: ""});
+      console.log(this.state.todoStamps);
     }
   }
 
@@ -49,6 +58,7 @@ class App extends React.Component {
           key={k}
           id={k}
           todo={this.state.todos[k]}
+          todoStamp={this.state.todoStamps[k]}
           todoRemove={(id) => this.todoRemove(id)}
       />
       );
