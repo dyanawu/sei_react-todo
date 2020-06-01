@@ -21,10 +21,15 @@ class App extends React.Component {
 
   inputChecker(e) {
     let newTodo = e.target.value;
-    if (newTodo.length >= 1 && newTodo.length <= 200) {
-      this.setState({newTodo: e.target.value, validationError: "", disabled: false});
+    if (newTodo.length == 1) {
+      this.setState({newTodo: e.target.value, validationError: "Todo must be longer than 1 character", disabled: true});
+    } else if (newTodo.length > 200) {
+      this.setState({newTodo: e.target.value, validationError: "Todo must be 200 or fewer characters", disabled: true});
+    }
+    else if (newTodo.length == 0) {
+      this.setState({newTodo: e.target.value, validationError: "", disabled: true});
     } else {
-      this.setState({newTodo: e.target.value, validationError: "Length must be between 1 and 200", disabled: true});
+      this.setState({newTodo: e.target.value, validationError:"", disabled: false});
     }
   }
 
@@ -58,7 +63,7 @@ class App extends React.Component {
           todo={this.state.todos[k]}
           todoStamp={this.state.todoStamps[k]}
           todoRemove={(id) => this.todoRemove(id)}
-      />
+        />
       );
     });
 

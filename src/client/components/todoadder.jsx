@@ -18,13 +18,14 @@ class TodoAdder extends Component {
                onChange={(e) => this.props.inputChecker(e)}
                value={this.props.inputField}
         />
+        <span className="counter">{this.props.inputField.length}/200</span>
+        <span className="error">{this.props.error}</span>
         <input type="submit"
                className={this.state.buttonStyle}
                onClick={(e) => this.props.todoAdd(e)}
                value="Add to list"
                disabled={this.props.disabled}
         />
-        <span>{this.props.error}</span>
       </>
     );
   }
