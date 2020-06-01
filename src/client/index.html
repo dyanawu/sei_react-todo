@@ -10,6 +10,7 @@
        flex-direction: column;
        justify-content: flex-start;
        align-items: center;
+       font-family: serif;
      }
 
      #app {
@@ -42,19 +43,18 @@
        margin-bottom: 1em;
        margin-top: 1em;
        border: 1px dotted grey;
-       font-family: serif;
        font-size: 20px;
        box-sizing: border-box;
      }
 
      .todo-button {
-       font-family: serif;
        font-size: 20px;
        width: 90%;
        background-color: white;
        border: 1px solid black;
        padding: 1px;
        box-sizing: border-box;
+       font-family: inherit;
      }
 
      .todo-container {
@@ -64,7 +64,6 @@
        align-items: flex-start;
        background-color: white;
        width: 100%;
-       padding: 1em;
        margin-top: 3px;
        border: 1px solid black;
        box-sizing: border-box;
@@ -84,17 +83,25 @@
        max-width: 80%;
        overflow-wrap: break-word;
        word-wrap: break-word;
+       padding-left: 1em;
+       padding-top: 1em;
      }
 
      .todo-item-button {
        background-color: white;
-       border: 1px solid black;
-       padding: 1px;
+       border: none;
+       border-left: 1px solid black;
+       border-bottom: 1px solid black;
+       padding: none;
+       font-size: 15px;
+       transform: translate(0, -1px);
      }
 
      .timestamp {
        color: grey;
        font-size: 7px;
+       padding-left: 2em;
+       padding-bottom: 2em;
      }
 
     </style>
