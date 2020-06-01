@@ -24,7 +24,7 @@ class App extends React.Component {
     if (newTodo.length >= 1 && newTodo.length <= 200) {
       this.setState({newTodo: e.target.value, validationError: "", disabled: false});
     } else {
-      this.setState({validationError: "Length must be between 1 and 200", disabled: true});
+      this.setState({newTodo: e.target.value, validationError: "Length must be between 1 and 200", disabled: true});
     }
   }
 
@@ -35,13 +35,11 @@ class App extends React.Component {
     } else {
       let i = this.state.newId;
       let stamp = moment();
-      console.log(stamp);
       this.setState({
         todos: {...this.state.todos, [i]: newTodo},
         todoStamps: {...this.state.todoStamps, [i]: stamp},
         newId: i + 1,
         newTodo: ""});
-      console.log(this.state.todoStamps);
     }
   }
 

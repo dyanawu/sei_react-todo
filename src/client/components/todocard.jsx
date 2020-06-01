@@ -8,9 +8,7 @@ class TodoCard extends Component {
 
   render() {
     let stamp = this.props.todoStamp;
-    console.log(moment().diff(stamp, 'seconds'));
     if (moment().diff(stamp, 'seconds') > 6) {
-      console.log("here");
       stamp = this.props.todoStamp.format("ddd, DD-MM-YYYY, HH:mm");
     } else {
       stamp = this.props.todoStamp.fromNow();
