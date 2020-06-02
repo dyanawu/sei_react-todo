@@ -48,6 +48,10 @@ class App extends React.Component {
     }
   }
 
+  todoEdit(id) {
+    console.log("edit:", id);
+  }
+
   todoRemove(id) {
     let todos = this.state.todos;
     delete todos[id];

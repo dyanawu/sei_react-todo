@@ -17,12 +17,17 @@ class TodoCard extends Component {
     return(
       <div className="todo-container">
         <div className="todo-card">
-        <span className="wrap">{this.props.todo}</span>
-        <span><button
-                className="todo-delete-button"
-                onClick={(id) => {this.props.todoRemove(this.props.id)}}
-
-              >X</button></span>
+          <span className="wrap">{this.props.todo}</span>
+          <span>
+            <button
+              className="todo-card-button"
+              onClick={(id) => {this.props.todoEdit(this.props.id)}}
+            >E</button>
+            <button
+              className="todo-card-button"
+              onClick={(id) => {this.props.todoRemove(this.props.id)}}
+            >X</button>
+          </span>
         </div>
         <div className="timestamp">
           {stamp}
