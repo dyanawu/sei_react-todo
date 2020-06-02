@@ -9,8 +9,13 @@ class TodoCard extends Component {
 
     this.state = {
       editing: false
-    }
+    };
   }
+
+  todoEdit() {
+    this.setState({editing: !this.state.editing});
+  }
+
 
   render() {
     let stamp = this.props.todoStamp;
@@ -28,7 +33,9 @@ class TodoCard extends Component {
             <span>
               <button
                 className="todo-card-button"
-                onClick={(id) => {this.props.todoEdit(this.props.id)}}
+                onClick={(id) => {
+                  this.todoEdit(this.props.id);
+                }}
               >E</button>
               <button
                 className="todo-card-button"
@@ -36,10 +43,15 @@ class TodoCard extends Component {
               >X</button>
             </span>
           </div>
-          <TodoEditor
+          {this.state.editing ?
+          (<TodoEditor
             todoUpdate={(id) => this.props.todoUpdate(id)}
-            id={this.props.id}
-          />
+             id={this.props.id}
+             editField={this.props.todo}
+             editError={this.props.editError}
+             todoEdit={() => {this.todoEdit()}}
+             todoEditInputChecker={(e) => {this.props.todoEditInputChecker(e)}}
+          />) : <></>}
           <div className="timestamp">
             {stamp}
           </div>

@@ -15,21 +15,23 @@ class App extends React.Component {
       newId: 1,
       newTodo: "",
       validationError: "",
-      disabled: true
+      disabled: true,
+      editField: "",
+      editError: ""
     }
   }
 
   inputChecker(e) {
     let newTodo = e.target.value;
     if (newTodo.length == 1) {
-      this.setState({newTodo: e.target.value, validationError: "Todo must be longer than 1 character", disabled: true});
+      this.setState({newTodo: newTodo, validationError: "Todo must be longer than 1 character", disabled: true});
     } else if (newTodo.length > 200) {
-      this.setState({newTodo: e.target.value, validationError: "Todo must be 200 or fewer characters", disabled: true});
+      this.setState({newTodo: newTodo, validationError: "Todo must be 200 or fewer characters", disabled: true});
     }
     else if (newTodo.length == 0) {
-      this.setState({newTodo: e.target.value, validationError: "", disabled: true});
+      this.setState({newTodo: newTodo, validationError: "", disabled: true});
     } else {
-      this.setState({newTodo: e.target.value, validationError:"", disabled: false});
+      this.setState({newTodo: newTodo, validationError:"", disabled: false});
     }
   }
 
@@ -38,23 +40,36 @@ class App extends React.Component {
     if (newTodo.length == 0) {
       return;
     } else {
-      let i = this.state.newId;
+      let id = this.state.newId;
       let stamp = moment();
       this.setState({
-        todos: {...this.state.todos, [i]: newTodo},
-        todoStamps: {...this.state.todoStamps, [i]: stamp},
-        newId: i + 1,
+        todos: {...this.state.todos, [id]: newTodo},
+        todoStamps: {...this.state.todoStamps, [id]: stamp},
+        newId: id + 1,
         newTodo: "",
         disabled: true});
     }
   }
 
-  todoEdit(id) {
-    console.log("edit:", id);
+  todoEditInputChecker(e) {
+    let edited = e.target.value;
+    if (edited.length < 2) {
+      this.setState({editField: edited, editError: "Todo must be longer than 1 character"});
+    } else if (edited.length > 200) {
+      this.setState({editField: edited, editError: "Todo must be 200 or fewer characters"});
+    } else {
+      this.setState({editField: edited, editError:""});
+    }
   }
 
   todoUpdate(id) {
-    console.log("update:", id);
+    let updated = this.state.editField;
+    console.log(this.state.todos[id]);
+    let stamp = moment();
+    this.setState({
+      todos: {...this.state.todos, [id]: updated},
+      todoStamps: {...this.state.todoStamps, [id]: stamp}
+    });
   }
 
   todoRemove(id) {
@@ -76,9 +91,12 @@ class App extends React.Component {
         <TodoContainer
           todos={this.state.todos}
           todoStamps={this.state.todoStamps}
-          todoEdit={(id) => this.todoEdit(id)}
+          todoEditInputChecker={(e) => {this.todoEditInputChecker(e)}}
           todoUpdate={(id) => this.todoUpdate(id)}
           todoRemove={(id) => this.todoRemove(id)}
+          editing={this.state.editing}
+          editField={this.state.editField}
+          editError={this.state.editError}
         />
       </>
     );
