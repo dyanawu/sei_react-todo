@@ -44,7 +44,8 @@ class App extends React.Component {
         todos: {...this.state.todos, [i]: newTodo},
         todoStamps: {...this.state.todoStamps, [i]: stamp},
         newId: i + 1,
-        newTodo: ""});
+        newTodo: "",
+        disabled: true});
     }
   }
 
