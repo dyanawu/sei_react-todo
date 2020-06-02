@@ -17,6 +17,7 @@ class TodoContainer extends Component {
           todo={this.props.todos[k]}
           todoStamp={this.props.todoStamps[k]}
           todoEdit={(id) => this.props.todoEdit(id)}
+          todoUpdate={(id) => this.props.todoUpdate(id)}
           todoRemove={(id) => this.props.todoRemove(id)}
         />
       );

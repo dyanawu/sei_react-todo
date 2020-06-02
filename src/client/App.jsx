@@ -52,6 +52,10 @@ class App extends React.Component {
     console.log("edit:", id);
   }
 
+  todoUpdate(id) {
+    console.log("update:", id);
+  }
+
   todoRemove(id) {
     let todos = this.state.todos;
     delete todos[id];
@@ -72,6 +76,7 @@ class App extends React.Component {
           todos={this.state.todos}
           todoStamps={this.state.todoStamps}
           todoEdit={(id) => this.todoEdit(id)}
+          todoUpdate={(id) => this.todoUpdate(id)}
           todoRemove={(id) => this.todoRemove(id)}
         />
       </>
